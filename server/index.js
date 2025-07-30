@@ -6,14 +6,21 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const allowedOrigins = [
-  "http://localhost:5173", // Vite dev
-  "https://ai-career-frontend-livid.vercel.app",
-];
-
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // for mobile/local testing etc.
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://ai-career-frontend-livid.vercel.app",
+        "https://ai-career-frontend.vercel.app",
+      ];
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
     credentials: true,
   })
