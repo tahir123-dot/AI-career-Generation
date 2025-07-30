@@ -6,7 +6,19 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173", // Vite dev
+  "https://ai-career-frontend-livid.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Health check
@@ -29,12 +41,22 @@ app.post("/generate", async (req, res) => {
     const lowerPrompt = prompt.toLowerCase();
 
     // ❌ Prevent irrelevant inputs (like jokes, politics, weather, etc.)
-    const bannedWords = ["elon", "weather", "president", "news", "joke", "tiktok", "instagram", "bts"];
+    const bannedWords = [
+      "elon",
+      "weather",
+      "president",
+      "news",
+      "joke",
+      "tiktok",
+      "instagram",
+      "bts",
+    ];
     const isInvalid = bannedWords.some((word) => lowerPrompt.includes(word));
 
     if (isInvalid || lowerPrompt.length < 10) {
       return res.status(200).json({
-        generated: "❌ This AI is only designed to generate career path suggestions. Please describe your skills, interests, or goals.",
+        generated:
+          "❌ This AI is only designed to generate career path suggestions. Please describe your skills, interests, or goals.",
         success: false,
       });
     }
