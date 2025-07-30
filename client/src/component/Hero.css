@@ -1,0 +1,41 @@
+.heroContainer {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-Generate-Section {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 601px;
+}
+
+.hero-Heading {
+  color: #5b5656;
+  text-align: center;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 69px; /* 115% */
+  margin: 0px;
+}
+
+.hero-Highlight {
+  color: #4e4a4a;
+  text-align: center;
+  font-family: Inter;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 41px;
+}
+
+.generateButton {
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

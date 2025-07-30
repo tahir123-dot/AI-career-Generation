@@ -1,0 +1,20 @@
+.GenerateBox {
+  width: 347px;
+  height: 92px;
+  border-radius: 19px;
+  background: linear-gradient(180deg, #f8d7d7 0%, #b384c6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.generateText {
+  color: #4e4a4a;
+  text-align: center;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+}
